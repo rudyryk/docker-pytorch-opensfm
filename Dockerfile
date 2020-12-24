@@ -43,7 +43,39 @@ RUN \
     make install && \
     cd / && rm -rf /opt/src/opengv
 
-# TODO: Install OpenCV
+# OpenCV
+ARG OPENCV_VERSION=3.4.13
+RUN \
+    mkdir -p /opt/src && cd /opt/src && \
+    wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip -O opencv.zip && \
+    unzip -q opencv.zip && rm opencv.zip && \
+    mv ./opencv-${OPENCV_VERSION} ./opencv && \
+    wget https://github.com/opencv/opencv_contrib/archive/${OPENCV_VERSION}.zip -O opencv_contrib.zip && \
+    unzip -q opencv_contrib.zip && rm opencv_contrib.zip && \
+    mv ./opencv_contrib-${OPENCV_VERSION} ./opencv_contrib && \
+    cd ./opencv && \
+    mkdir ./build && cd ./build && \
+    cmake \
+        -D CMAKE_BUILD_TYPE=RELEASE \
+        -D BUILD_PYTHON_SUPPORT=ON \
+        -D BUILD_DOCS=OFF \
+        -D BUILD_PERF_TESTS=OFF \
+        -D BUILD_TESTS=OFF \
+        -D CMAKE_INSTALL_PREFIX=/usr/local \
+        -D OPENCV_EXTRA_MODULES_PATH=/opt/src/opencv_contrib/modules \
+        -D BUILD_opencv_python3=ON \
+        -D BUILD_opencv_python2=OFF \
+        -D PYTHON_DEFAULT_EXECUTABLE=$(which python) \
+        -D BUILD_EXAMPLES=OFF \
+        -D WITH_IPP=OFF \
+        -D WITH_FFMPEG=ON \
+        -D ENABLE_PRECOMPILED_HEADERS=OFF \
+        .. \
+    && \
+    make -j$(nproc) && \
+    make install && \
+    ldconfig
+
 # TODO: http://ceres-solver.org/ceres-solver-2.0.0.tar.gz
 # TODO: https://github.com/mapillary/OpenSfM/archive/1e083558893d97c3344df653f03aff108d242f3b.zip
 
