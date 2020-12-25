@@ -1,8 +1,9 @@
-docker-pytorch-faiss
-====================
+docker-pytorch-opensfm
+======================
 
-Docker image containing `PyTorch` and `Faiss` with some useful extras:
+Docker image containing `PyTorch` and `OpenSFM` with some useful extras:
 
+- Jypyter
 - Faiss
 - scipy
 - numpy
@@ -13,14 +14,14 @@ Docker image containing `PyTorch` and `Faiss` with some useful extras:
 ## Building
 
 ```bash
-docker build -t pytorch-faiss-tools:latest .
-docker tag pytorch-faiss-tools:latest rudyryk/pytorch-faiss-tools:latest
-docker push rudyryk/pytorch-faiss-tools:latest
+docker build -t pytorch-opensfm:latest .
+docker tag pytorch-opensfm:latest rudyryk/pytorch-opensfm:latest
+docker push rudyryk/pytorch-opensfm:latest
 ```
 
 Test run:
 
 ```bash
-docker run -it --rm -p 8888:8888 pytorch-faiss-tools:latest \
+docker run -it --rm -p 8888:8888 pytorch-opensfm:latest \
     jupyter lab --allow-root --ip=0.0.0.0 --port 8888 --no-browser
 ```
