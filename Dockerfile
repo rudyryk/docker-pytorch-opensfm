@@ -80,7 +80,6 @@ RUN \
 # TODO: https://github.com/mapillary/OpenSfM/archive/1e083558893d97c3344df653f03aff108d242f3b.zip
 
 # OpenFSM
-# RUN mkdir -p /opt/src && cd /opt/src && \
-#     git clone --recursive https://github.com/mapillary/OpenSfM && \
-#     cd OpenSfM && git submodule update --init --recursive && \
-#     python setup.py build
+RUN mkdir -p /opt/src && cd /opt/src && \
+    git clone --recurse-submodules https://github.com/mapillary/OpenSfM && \
+    python setup.py build
