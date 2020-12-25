@@ -82,4 +82,4 @@ RUN \
 # OpenFSM
 RUN mkdir -p /opt/src && cd /opt/src && \
     git clone --recurse-submodules https://github.com/mapillary/OpenSfM && \
-    python setup.py build
+    cd OpenSfM && python setup.py build
