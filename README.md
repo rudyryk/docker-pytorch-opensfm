@@ -14,7 +14,7 @@ Docker image containing `PyTorch` and `OpenSFM` with some useful extras:
 ## Building
 
 ```bash
-docker build -t pytorch-opensfm:latest .
+docker build -t pytorch-opensfm:latest ./docker
 docker tag pytorch-opensfm:latest rudyryk/pytorch-opensfm:latest
 docker push rudyryk/pytorch-opensfm:latest
 ```
