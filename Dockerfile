@@ -51,7 +51,7 @@ RUN apt-get update -y \
     && mv ./opencv_contrib-${OPENCV_VERSION} ./opencv_contrib \
     && cd ./opencv \
     && mkdir ./build && cd ./build \
-    && cmake .. \
+    && cmake \
         -D CMAKE_BUILD_TYPE=RELEASE \
         -D BUILD_PYTHON_SUPPORT=ON \
         -D BUILD_DOCS=OFF \
@@ -66,6 +66,7 @@ RUN apt-get update -y \
         -D WITH_IPP=OFF \
         -D WITH_FFMPEG=ON \
         -D ENABLE_PRECOMPILED_HEADERS=OFF \
+        .. \
     && make -j$(nproc) \
     && make install \
     && ldconfig \
