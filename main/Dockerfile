@@ -24,7 +24,9 @@ RUN apt-get update \
         python-dateutil \
         pyyaml \
         xmltodict \
-        matplotlib
+        matplotlib \
+        genson \
+        pandas
 
 # TODO: figure out (probably) how to add `pycolmap`
 # && pip install --no-cache-dir git+https://github.com/mihaidusmanu/pycolmap
