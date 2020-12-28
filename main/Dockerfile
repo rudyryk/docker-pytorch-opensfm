@@ -1,5 +1,11 @@
 FROM rudyryk/pytorch-opensfm:base
 
+RUN \
+    mkdir -p /opt/src && cd /opt/src \
+    && git clone --recurse-submodules https://github.com/mapillary/OpenSfM \
+    && cd ./OpenSfM && python setup.py install \
+    && cd /opt/src && rm -rf ./OpenSfM
+
 RUN apt-get update \
     && apt-get install -y \
         colmap \
