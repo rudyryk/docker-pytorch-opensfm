@@ -13,7 +13,18 @@ RUN apt-get update \
         colmap \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    && pip install --no-cache-dir opencv-python
+    && pip install --no-cache-dir \
+        opencv-python \
+        cloudpickle \
+        exifread \
+        joblib \
+        networkx \
+        pyproj \
+        pillow \
+        python-dateutil \
+        pyyaml \
+        xmltodict \
+        matplotlib
 
 # TODO: figure out (probably) how to add `pycolmap`
 # && pip install --no-cache-dir git+https://github.com/mihaidusmanu/pycolmap
